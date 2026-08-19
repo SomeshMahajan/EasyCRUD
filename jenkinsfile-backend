@@ -34,7 +34,7 @@ pipeline {
         stage('Artifact to s3') {
             steps {
                 sh '''
-                    sudo snap install asw-cli --classic
+                    sudo snap install aws-cli --classic
                     aws s3 cp backend/target/*.jar s3://easycurd.space/Artifact/student.war
                 '''
             }
