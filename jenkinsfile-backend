@@ -58,7 +58,7 @@ pipeline {
             }
         }
 
-        stage('Docker Buid') {
+        stage('Docker Build') {
             steps {
                 dir('backend') {
                     sh '''
