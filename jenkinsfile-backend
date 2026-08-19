@@ -8,9 +8,8 @@ pipeline {
     }
 
     environment {
-        my aws_cred = credentials('aws-access')
-
-    }
+        my_aws_cred = credentials('aws-access')
+     }
 
     stages {
         stage('Checkout'){
