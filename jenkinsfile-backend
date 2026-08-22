@@ -68,5 +68,22 @@ pipeline {
                 }
             }
         }
+
+        stage('Trivy image scanning') {
+            steps {
+                sh '''
+                   trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 0 backend:${BUILD_NUMBER}
+
+                '''
+            }
+        }
+
+        stage('Approval') {
+            steps {
+                timeout(time: 30, unit: 'MINUTES') {
+                    input message: 'Approve deployment to kubernetes?', ok: 'Approve' 
+                }
+            }
+        }
     }
 }
