@@ -72,7 +72,7 @@ pipeline {
         stage('Trivy image scanning') {
             steps {
                 sh '''
-                   trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 0 backend:${BUILD_NUMBER}
+                   temp trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 0 backend:${BUILD_NUMBER}
                 '''
             }
         }
